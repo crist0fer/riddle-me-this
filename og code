@@ -22,8 +22,16 @@ def game_questions():
         data = json.load(json_data)
         return render_template("game.html", page_title="riddle_me_this", company_data=data)
       
-
-   
+      '''  
+        import json
+for i in json.loads(your_json_string):
+    print('Your Question is: '+i['description'])
+    #take answer
+    # if ans == i['answer'] #continue for loop
+    # else
+    # break
+      '''  
+        
     
     def write_to_data(filename, data):
         with open(filename, "a") as file:
