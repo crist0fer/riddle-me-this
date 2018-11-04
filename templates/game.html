@@ -22,16 +22,17 @@
         <div class="row">
           <div class="col-xl-9 mx-auto">
             <h1 class="mb-5">{{ username }}</h1>
-            <h1 class="mb-5">{{ company_data[0]["description"] }}</h1>
-          </div>
-          <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
-            <form method="POST" class="form-inline">
-                        <input type="text" class="form-control" placeholder="answer" name="message" id="message" autofocus>
-                        <input type="hidden" name="riddle_index" id="riddle_index" value={{riddle_index}}>
-                        <button class="btn btn-danger">Submit Answer</button>
+               <h1>{{ question.description }}</h1>
+   <form method="POST" action="/questions">
+<input type="text" name="answer">
+<input type="hidden" name="qid" value="{{ question.id }}">
+<button>
+      submit
+</button>
+       
+        </form>
                 </div>
               </div>
-            </form>
           </div>
         </div>
       </div>

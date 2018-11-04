@@ -10,66 +10,253 @@ usernames = []
 @app.route('/', methods=["GET", "POST"])
 def riddle_me_this():
     if request.method == 'POST':
-        # store the username from the form in the session
+        
       return redirect(url_for('game_questions'))
     return render_template("index.html")
 
 
-@app.route('/game', methods=["GET", "POST"])
+@app.route('/game/question/id', methods=["GET"])
 def game_questions():
     data = []
     with open("data/company.json", "r") as json_data:
         data = json.load(json_data)
         return render_template("game.html", page_title="riddle_me_this", company_data=data)
-      
-      '''  
-        import json
-for i in json.loads(your_json_string):
-    print('Your Question is: '+i['description'])
-    #take answer
-    # if ans == i['answer'] #continue for loop
-    # else
-    # break
-      '''  
-        
-    
-    def write_to_data(filename, data):
-        with open(filename, "a") as file:
-            file.writelines(data)
-    
-    
-    def add_users(username):
-        write_to_data("data/users.txt", "r")
-    
-    
-    def get_all_users():
-        users = []
-        with open("data/users.txt", "r") as user_messages:
-            users = user_messages.readlines()
-        return users
         
         
-    @app.route('/<question_number>')
-    def game(question_number):
-        username = session.get('username')
-        if request.method == 'POST':
-            data = []
-            with open("data.company.json", "r") as json_data:
-                data=json.load(json_data)
-                
-            # here comes the answer processing
-            pass
-        
-        # get question from the file using question_number
-        def get_question():
-            questions = []
-            with open("data.company.json", "r") as json_data:
-                return render_template('game.html')
+@app.route('/game', methods=["POST"])
+def questions_post():
+    data = []
+    req = request.form.to_dict()
+    user_answer = req.get('answer')
     
+    all_questions="company.json"
+    
+    def get_next_question():
+        all_questions
+        json_data[+1]
 
-    
+    with open("data/company.json", "r") as json_data:
+        data = json.load(json_data)
+        
+        if "user_answer" == ['answer']:
+            get_next_question()
+            
+               for ([id] in company_data.description) {
+    x += company_data.description[+1];
+}
                 
     
     
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP', '0.0.0.0'), port=int(os.environ.get('PORT', 0)), debug=True)
+    
+        @app.route</test/<id>, methods=["post"])   
+    def test(id):
+        if user_answer == ["answer"]
+        return redirect ("test/2")
+        
+        
+        
+        
+        
+        
+        
+        
+import os
+import json
+    
+from datetime import datetime
+from flask import Flask, render_template, redirect, request, url_for, session
+    
+app = Flask(__name__)
+usernames = []
+    
+@app.route('/', methods=["GET", "POST"])
+def riddle_me_this():
+    if request.method == 'POST':
+        
+      return redirect(url_for('game_questions'))
+    return render_template("index.html")
+    
+        
+    
+    
+@app.route('/<id>', methods=["GET", "POST"])
+def game_questions(id):
+    data = []
+    with open("data/company.json", "r") as json_data:
+        data = json.load(json_data)
+        index = 0
+        score = 0
+            
+    if request.method == "POST":
+            user_answer = request.form["user_answer"]
+            right_answer = data[index]['answer']
+            
+            
+    if user_answer != right_answer:
+        with open("data/company.jsons", "w") as answer:
+                answer.write(request.form["user_answer"] + "\n")
+                score +=1
+                index+=1
+        return render_template("game.html", page_title="riddle_me_this", company_data=data)
+        
+
+
+"""       
+@app.route('/game', methods=["POST"])
+def questions_post():
+    data = []
+    req = request.form.to_dict()
+    user_answer = req.get('answer')
+    
+    
+
+    with open("data/company.json", "r") as json_data:
+        data = json.load(json_data)
+        
+        questions = [0]
+        
+        company_data = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
+        
+        if "user_answer" == ['answer']:
+   """         
+            
+            
+    
+                
+    
+    
+if __name__ == '__main__':
+    app.run(host=os.environ.get('IP', '0.0.0.0'), port=int(os.environ.get('PORT', 0)), debug=True)        
+    
+    
+    
+    
+import os
+import json
+    
+from datetime import datetime
+from flask import Flask, render_template, redirect, request, url_for, session
+    
+app = Flask(__name__)
+usernames = []
+    
+@app.route('/', methods=["GET", "POST"])
+def riddle_me_this():
+    if request.method == 'POST':
+        
+      return redirect(url_for('questions_post'))
+    return render_template("index.html")
+    
+        
+'''   
+    
+@app.route('/questions/<id>', methods=["GET", "POST"])
+def questions(id):
+    data = []
+    with open("data/company.json", "r") as json_data:
+        data = json.load(json_data)
+        index = 0
+        score = 0
+            
+    if request.method == "POST":
+            user_answer = request.form["user_answer"]
+            right_answer = data[index]['answer']
+            
+            
+    if user_answer != right_answer:
+        with open("data/company.jsons", "w") as answer:
+                answer.write(request.form["user_answer"] + "\n")
+                score +=1
+                index+=1
+        return render_template("game.html", page_title="riddle_me_this", company_data=data)
+   '''     
+
+
+    
+@app.route('/game', methods=["GET", "POST"])
+def questions_post(id):
+    data = []
+    req = request.form.to_dict()
+    user_answer = req.get('answer')
+    
+    
+
+    with open("data/company.json", "r") as json_data:
+        data = json.load(json_data)
+        
+    company_data = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];    
+        
+    index = company_data
+    score = 0
+        
+    if request.method == "POST":
+            user_answer = request.form["user_answer", "id"]
+            right_answer = data[index]['answer']
+            
+            
+    if user_answer != right_answer:
+        with open("data/company.jsons", "w") as answer:
+                answer.write(request.form["user_answer"] + "\n")
+                score +=1
+                index+=1
+        return render_template("game.html", page_title="riddle_me_this", company_data=data)
+       
+            
+            
+    
+                
+    
+    
+if __name__ == '__main__':
+    app.run(host=os.environ.get('IP', '0.0.0.0'), port=int(os.environ.get('PORT', 0)), debug=True)    
+    
+    
+    
+    import os
+import json
+    
+from datetime import datetime
+from flask import Flask, render_template, redirect, request, url_for, session
+    
+app = Flask(__name__)
+usernames = []
+    
+@app.route('/', methods=["GET", "POST"])
+def riddle_me_this():
+    if request.method == 'POST':
+        
+      return redirect(url_for('game_questions'))
+    return render_template("index.html")
+
+'''
+@app.route('/game/<qid>', methods=["GET", "POST"])
+def questions(qid):
+    data = []
+    req = request.form.to_dict()
+    user_answer = req.get('answer')
+    
+    
+    
+
+    with open("data/company.json", "r") as json_data:
+        data = json.load(json_data)
+        
+        
+    index = int(qid)
+    score = 0
+        
+    if request.method == "POST":
+            user_answer = request.form["user_answer", "qid"]
+            right_answer = data[index]['answer']
+            
+            
+    if user_answer != right_answer:
+        with open("data/company.jsons", "w") as answer:
+                answer.write(request.form["user_answer"] + "\n")
+                score +=1
+                index+=1
+        return render_template("game.html", page_title="riddle_me_this", company_data=data)
+        
+  '''      
